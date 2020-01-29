@@ -16,9 +16,7 @@ let router = new VueRouter({
         {
             path : "/message" , component : message
         },
-        {
-            path : "/message" , component : message
-        }
+       
     ]
 })
 
