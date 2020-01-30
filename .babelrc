@@ -7,7 +7,7 @@
     }
   ]]],
   "ignore": [
-    "./src/lib/mui/js/mui.min.js"
+    "./src/lib/mui/js/mui.min.js",
   ]
 
 

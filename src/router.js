@@ -1,6 +1,8 @@
 import VueRouter from 'vue-router'
-import home from './components/home.vue' 
-import message from './components/message.vue'
+import home from './components/tabbar/home.vue' 
+import member from './components/tabbar/the_member.vue'
+import shoppoing_car from './components/tabbar/shoppoing_car.vue'
+import search from './components/tabbar/search.vue'
 
 let router = new VueRouter({
     routes: [
@@ -11,13 +13,17 @@ let router = new VueRouter({
             path : "/home" , component : home
         },
         {
-            path : "/message" , component : message
+            path : "/member" , component : member
         },
         {
-            path : "/message" , component : message
+            path : "/shoppoing_car" , component : shoppoing_car
         },
-       
-    ]
+        {
+            path : "/search" , component : search
+        },
+    ],
+    linkActiveClass: 'mui-active' 
+   
 })
 
 

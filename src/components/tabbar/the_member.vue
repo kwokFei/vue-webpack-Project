@@ -1,6 +1,6 @@
 <template>
     <div>
-        这是home.html
+        member.html
     </div>
 </template>
 

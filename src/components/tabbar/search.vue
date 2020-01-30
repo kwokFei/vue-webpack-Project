@@ -1,6 +1,6 @@
 <template>
     <div>
-        这是message.html
+        search.html
     </div>
 </template>
 
