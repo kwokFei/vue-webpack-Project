@@ -20,6 +20,7 @@ Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
 
 import { Spinner } from 'mint-ui';
+
 Vue.component(Spinner.name, Spinner);
 
 
@@ -27,10 +28,11 @@ Vue.component(Spinner.name, Spinner);
 import './lib/mui/css/mui.min.css';
 import './lib/mui/css/icons-extra.css'
 import './lib/mui/css/iconfont.css'
-import mui from './lib/mui/js/mui.min.js'
 
 import './css/baic.css'
 
+import axios from 'axios'; //导入axios
+Vue.prototype.axios = axios;  //把axios挂载到Vue的原型上
 
 function rem() {
   var htmlEle = document.documentElement;

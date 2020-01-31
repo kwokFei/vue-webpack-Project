@@ -1,2 +1,8 @@
-
-
+* { touch-action: pan-x; } 
+body{
+    background-color: #fff;
+}
+.router-link-exact-active,
+.router-link-active{
+    color: #007aff !important;
+}
