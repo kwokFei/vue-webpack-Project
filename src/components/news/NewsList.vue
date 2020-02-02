@@ -1,16 +1,14 @@
 <template>
   <div>
     <ul class="mui-table-view">
-      <li class="mui-table-view-cell 
-                mui-media" 
-                v-for="(item,key) in newList" :key="key">
-        <router-link to>
+      <li class="mui-table-view-cell mui-media" v-for="(item,key) in newList" :key="key">
+        <router-link :to="'/home/newinfo/' + item.id">
           <img class="mui-media-object mui-pull-left" :src="item.img_url" />
           <div class="mui-media-body">
             <h4 class="mui-ellipsis">{{item.title}}</h4>
             <p class="mui-ellipsis">
               <span>发表时间:</span>
-              <span>{{item.add_time}}</span>
+              <span>{{item.add_time | tiemForm }}</span>
               <span class="rightflow">
                 <span>点击:</span>
                 <span>{{item.click}}次</span>
@@ -24,47 +22,46 @@
 </template>
 
 <script>
-import { Toast } from "mint-ui";
-import { Indicator } from "mint-ui";
+import mypublic from "../js/public";
 export default {
   created() {
     //获取新闻列表
-    this.getaxios({
-      method: "get",
-      url: "../../../data/newlist.json"
-    }).then((data) =>{
-      console.log("data1:", data);
+    mypublic
+      .getaxios({
+        method: "get",
+        url: "../../../data/newlist.json"
+      })
+      .then(data => {
+
+        for(let i=0;i<data.message.length;i++){
+          data.message[i]['img_url'] = '/static/img/newlist/shuijiao.jpg'
+        }
+       
         this.newList = data.message;
-        // console.log('this.newList:', this.newList)
-    });
+      });
   },
   data() {
     return {
-        newList:[],
+      newList: []
     };
   },
   methods: {
 
-    getaxios(obj) {
-      Indicator.open({
-        text: "加载中",
-        spinnerType: "fading-circle"
-      });
-      return new Promise(resolve => {
-        this.axios({
-          method: obj.method,
-          url: obj.url
-        }).then(res => {
-          Indicator.close();
-          if (res.data.status === "0") return resolve(res.data);
-          Toast({
-            message: "加载失败",
-            position: "center",
-            duration: 2000
-          });
-        }).catch;
-      });
-    },
+    f(data){
+
+      console.log('data:', data)
+
+       for(let i=0;i<data.message.length;i++){
+          // data.message.img_url = require(data.message.img_url)
+          // let img = data.message[i]['img_url'];
+          // console.log('img:', img)
+          data.message[i]['img_url'] = '/static/img/newlist/shuijiao.jpg'
+          // console.log('data.message.img._url:', '"'+data.message[i]['img_url']+'"')
+        }
+       
+        this.newList = data.message;
+
+    }
    
   }
 };
